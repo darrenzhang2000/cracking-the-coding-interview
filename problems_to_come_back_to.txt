@@ -1,0 +1,2 @@
+Problems to come back to:
+Ch3 Q1: Need solution for flexible divisions
