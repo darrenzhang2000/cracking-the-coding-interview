@@ -124,12 +124,77 @@ for i in range(6):
 # tripleStack.push(1, 2)
 # print(tripleStack._arr[2])
 # print(tripleStack.top(2))
-tripleStack.pop(0)
-tripleStack.pop(0)
-print(tripleStack.top(1))
+# tripleStack.pop(0)
+# tripleStack.pop(0)
+# print(tripleStack.top(1))
 
 
 """
 Problem 3.2. Stack Min: How would you design a stack which, in addition to push and pop, has a function min which returns the minimum element? 
 Push, pop, min should all operate in O(1) time.
+
+Soln 1:
+As you push elements onto the stack, check to see if val is smaller than min. If so, let min to val.
+After popping elements off the stack, check if the stack is empty. If so, set min to None. 
+Bad because we need a way a store the min at each value on the stack
+
+Soln 2:
+As you push elements onto the stack, check to see if new element is <= min. If so, push min onto minStack. 
+That way, we only push elements onto the minStack only if the minimum changes.
+When we pop elements off the original stack, we only pop elements off the minStack if top element of both stacks are equal. 
 """
+
+class Stack:
+    """
+    A regular stack
+
+    Private:
+        Stack<int> _s
+        int _size
+    Public:
+        void push(val)
+        void pop()
+        int top()
+        bool isEmpty()
+        int size()
+    """
+    def __init__(self):
+        self._s = []
+        self._size = 0
+    
+    def push(self, val):
+        self._size += 1
+        self._s.append(val)
+        return
+
+    def top(self):
+        if self._size == 0:
+            raise Exception("Stack empty")
+        else:
+            return self._s[self._size - 1]
+
+    def pop(self):
+        if self.isEmpty():
+            raise Exception("Stack already empty")
+        else:
+            self._s.pop()
+            self._size -= 1
+            return
+
+    def isEmpty(self):
+        return self._size == 0 
+
+    def size(self):
+        return self._size
+
+# stack1 = Stack()
+# stack1.push(0)
+# print(stack1.top())
+# stack1.push(1)
+# print(stack1.top())
+# stack1.pop()
+# print(stack1.top())
+# print(stack1.isEmpty())
+# stack1.pop()
+# print(stack1.isEmpty())
+# print(stack1.top())
