@@ -2,7 +2,7 @@
 # Problem 3.1. Three in One: Describe how you could use a single array to implement three stacks
 
 # Consider an array of size 100. 100//3=33. Stack 1 gets index 0 to 32. Stack 2 gets index 33 to 65. Stack 3 gets rest.  
-# push, pop, peek, isEmpty
+# push, pop, top, isEmpty
 # Need to pass stack number for all of these methods 
 # """
 
@@ -72,7 +72,7 @@
 Problem 3.1. Three in One: Describe how you could use a single array to implement three stacks
 
 Consider an array of size 100. 100//3=33. Stack 1 gets index 0 to 32. Stack 2 gets index 33 to 65. Stack 3 gets rest.  
-push, pop, peek, isEmpty
+push, pop, top, isEmpty
 Need to pass stack number for all of these methods 
 """
 
@@ -98,29 +98,30 @@ class TripleStack:
             topIndex = self.computeTopIndex(stackNum)
             self._arr[topIndex] = val
 
-    def peek(self, stackNum):
+    def top(self, stackNum):
         if self._sizes[stackNum] == 0:
             raise Exception("Stack Empty")
         else:
             return self.computeTopIndex(stackNum)
 
-    def pop(self, stackNum, val):
+    def pop(self, stackNum):
         if self._sizes[stackNum] == 0:
             raise Exception("Stack Empty")
         else:
             self._sizes[stackNum] -= 1
 
 tripleStack = TripleStack(2)
-for i in range(5):
+for i in range(6):
     #0 0 1 1 
     tripleStack.push(i // 2, i)
-tripleStack.printTripleStack()
+# tripleStack.printTripleStack()
 # tripleStack.push(0, 0)
 # print(tripleStack._arr[0])
 # tripleStack.push(0, 1)
 # print(tripleStack._arr[1])
 # tripleStack.push(1, 2)
 # print(tripleStack._arr[2])
-print(tripleStack.peek(2))
-
-
+# print(tripleStack.top(2))
+tripleStack.pop(0)
+tripleStack.pop(0)
+print(tripleStack.top(1))
