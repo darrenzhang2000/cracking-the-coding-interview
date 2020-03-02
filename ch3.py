@@ -1,9 +1,9 @@
 # """
 # Problem 3.1. Three in One: Describe how you could use a single array to implement three stacks
 
-# Consider an array of size 100. 100//3=33. Stack 1 gets index 0 to 32. Stack 2 gets index 33 to 65. Stack 3 gets rest.  
+# Consider an array of size 100. 100//3=33. Stack 1 gets index 0 to 32. Stack 2 gets index 33 to 65. Stack 3 gets rest.
 # push, pop, top, isEmpty
-# Need to pass stack number for all of these methods 
+# Need to pass stack number for all of these methods
 # """
 
 # class TripleStack:
@@ -54,11 +54,11 @@
 #                 self.arr[self.stack2_top_index] = val
 #             else:
 #                 raise IndexError('Stack 3 Full')
-        
+
 
 # # tripleStack = TripleStack(6)
 # # for i in range(6):
-# #     #0 0 1 1 
+# #     #0 0 1 1
 # #     tripleStack.push(i // 2, i)
 # # tripleStack.printTripleStack()
 # # tripleStack.push(0, 0)
@@ -71,10 +71,11 @@
 """
 Problem 3.1. Three in One: Describe how you could use a single array to implement three stacks
 
-Consider an array of size 100. 100//3=33. Stack 1 gets index 0 to 32. Stack 2 gets index 33 to 65. Stack 3 gets rest.  
+Consider an array of size 100. 100//3=33. Stack 1 gets index 0 to 32. Stack 2 gets index 33 to 65. Stack 3 gets rest.
 push, pop, top, isEmpty
-Need to pass stack number for all of these methods 
+Need to pass stack number for all of these methods
 """
+
 
 class TripleStack:
     def __init__(self, stackSize):
@@ -82,12 +83,12 @@ class TripleStack:
         self._arr = [None] * 3 * stackSize
         self._sizes = [0, 0, 0]
 
-    def printTripleStack(self):
-        for i in self._arr:
-            print(i)
+    # def printTripleStack(self):
+    #     for i in self._arr:
+    #         print(i)
 
     def computeTopIndex(self, stackNum):
-        offset = stackNum * self._capacity 
+        offset = stackNum * self._capacity
         return offset + self._sizes[stackNum] - 1
 
     def push(self, stackNum, val):
@@ -110,9 +111,10 @@ class TripleStack:
         else:
             self._sizes[stackNum] -= 1
 
+
 tripleStack = TripleStack(2)
 for i in range(6):
-    #0 0 1 1 
+    # 0 0 1 1
     tripleStack.push(i // 2, i)
 # tripleStack.printTripleStack()
 # tripleStack.push(0, 0)
@@ -125,3 +127,9 @@ for i in range(6):
 tripleStack.pop(0)
 tripleStack.pop(0)
 print(tripleStack.top(1))
+
+
+"""
+Problem 3.2. Stack Min: How would you design a stack which, in addition to push and pop, has a function min which returns the minimum element? 
+Push, pop, min should all operate in O(1) time.
+"""
