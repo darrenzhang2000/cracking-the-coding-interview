@@ -88,8 +88,6 @@ class TripleStack:
 
     def computeTopIndex(self, stackNum):
         offset = stackNum * self._capacity 
-        print("offset is", offset, "top index is: ", offset + self._sizes[stackNum] - 1)
-
         return offset + self._sizes[stackNum] - 1
 
     def push(self, stackNum, val):
@@ -100,10 +98,20 @@ class TripleStack:
             topIndex = self.computeTopIndex(stackNum)
             self._arr[topIndex] = val
 
+    def peek(self, stackNum):
+        if self._sizes[stackNum] == 0:
+            raise Exception("Stack Empty")
+        else:
+            return self.computeTopIndex(stackNum)
+
     def pop(self, stackNum, val):
+        if self._sizes[stackNum] == 0:
+            raise Exception("Stack Empty")
+        else:
+            self._sizes[stackNum] -= 1
 
 tripleStack = TripleStack(2)
-for i in range(6):
+for i in range(5):
     #0 0 1 1 
     tripleStack.push(i // 2, i)
 tripleStack.printTripleStack()
@@ -113,6 +121,6 @@ tripleStack.printTripleStack()
 # print(tripleStack._arr[1])
 # tripleStack.push(1, 2)
 # print(tripleStack._arr[2])
-    
+print(tripleStack.peek(2))
 
 
