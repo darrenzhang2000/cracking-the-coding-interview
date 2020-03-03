@@ -339,6 +339,14 @@ public:
 """
 
 
+class MyQueue:
+    """
+    Problem 3.5. Queue via Stacks: Implement a MyQueue class which implements a queue using two stacks,
 
-
-
+    To enqueue just push onto stack1.
+    To dequeue, pop everything off stack1 and push onto stack2. When stack1 is empty, pop top off stack2. Then shove everything in stack2 onto stack1.
+    """
+    def __init__(self):
+        self._stack1 = []
+        self._stack2 = p[]
+    
