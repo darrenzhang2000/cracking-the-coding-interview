@@ -265,8 +265,80 @@ stackWithMin1.push(7)
 4
 4
 '''
-for i in range(8):
-    print(stackWithMin1.min())
-    stackWithMin1.pop()
-stackWithMin1.push(0)
-print(stackWithMin1.top())
+# for i in range(8):
+#     print(stackWithMin1.min())
+#     stackWithMin1.pop()
+# stackWithMin1.push(0)
+# print(stackWithMin1.top())
+
+class StackOfPlates:
+    """
+    An array of stacks
+
+    Private:
+        _capacity
+        _stackArray
+    Same methods as stack. However, once a stack reaches capacity, the next push creates a new stack
+        push(val)
+        pop()
+        top()
+    """
+    def __init__(self, capacity):
+        self._capacity = capacity
+        self._stackArray = []
+
+    def push(self, val):
+        if len(self._stackArray) == 0 or len(self._stackArray) >= self._capacity:
+            curStack = Stack()
+            curStack.push(val)
+            self._stackArray.append(curStack)
+        else: 
+            self._stackArray[-1].push(val)
+
+        
+    def pop(self):
+        if len(self._stackArray) == 0:
+            raise Exception("Stack List Empty")
+        else:
+            curStack = self._stackArray[-1]
+            curStack.pop()
+            if curStack.isEmpty():
+                self._stackArray.pop()
+
+    def top(self):
+        if len(self._stackArray) == 0:
+            raise Exception("Stack Empty")
+        else:
+            curStack = self._stackArray[-1]
+            return curStack.top()
+
+# stackOfPlates1 = StackOfPlates(2)
+# stackOfPlates1.push(0)
+# # print(stackOfPlates1.pop())
+# stackOfPlates1.push(1)
+# print(stackOfPlates1.top())
+# stackOfPlates1.push(2)
+# print(stackOfPlates1.top())
+# stackOfPlates1.push(3)
+# print(stackOfPlates1.top())
+
+"""
+Problem 3.3 Follow up: Implement popAt(int index)
+
+Soln 1: One method is have an array sizes that keeps track of all of the stacks in the list. 
+We would also have to keep track of the offset, maybe using a helper.
+If empty, don't do anything. Else, pop element at specified stack
+
+Pros: Time efficient to remove
+Cons: Holes 
+
+Soln 2: Rollover method
+
+public:
+    popAt(int index) - Pop top val. If stack exists at index + 1, pop the bottom val and push it to stack at index. 
+"""
+
+
+
+
+
