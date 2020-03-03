@@ -226,14 +226,14 @@ class StackWithMin(Stack):
         if val <= self._curMin:
             self._minS.push(val)
             self._curMin = val
-        super.push(val)
+        super().push(val)
         return
 
     def pop(self):
-        if self._minS == super.top():
+        if self._minS.top() == super().top():
             self._minS.pop()
             self._curMin = self._minS.top()
-        super.pop()
+        super().pop()
         return
 
     def min(self):
@@ -244,4 +244,29 @@ class StackWithMin(Stack):
 
 
 stackWithMin1 = StackWithMin()
+stackWithMin1.push(4)
+stackWithMin1.push(8)
+stackWithMin1.push(6)
+stackWithMin1.push(2)
+stackWithMin1.push(9)
+stackWithMin1.push(5)
+stackWithMin1.push(3)
+stackWithMin1.push(1)
+stackWithMin1.push(7)
 
+'''
+1
+1
+2
+2
+2
+2
+4
+4
+4
+'''
+for i in range(8):
+    print(stackWithMin1.min())
+    stackWithMin1.pop()
+stackWithMin1.push(0)
+print(stackWithMin1.top())
