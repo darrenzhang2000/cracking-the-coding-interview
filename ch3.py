@@ -198,3 +198,50 @@ class Stack:
 # stack1.pop()
 # print(stack1.isEmpty())
 # print(stack1.top())
+
+import sys
+class StackWithMin(Stack):
+    """
+    As you push elements onto the stack, check to see if new element is <= min. If so, push min onto minStack. 
+    That way, we only push elements onto the minStack only if the minimum changes.
+    When we pop elements off the original stack, we only pop elements off the minStack if top element of both stacks are equal.    
+    
+    private:
+        Stack<int> _minS
+        int _curMin
+
+        has private variables of base class
+    public:
+        void push(int)
+        void pop()
+        int min()
+
+    """
+    def __init__(self):
+        super().__init__()
+        self._minS = Stack()
+        self._curMin = sys.maxsize
+
+    def push(self, val):
+        if val <= self._curMin:
+            self._minS.push(val)
+            self._curMin = val
+        super.push(val)
+        return
+
+    def pop(self):
+        if self._minS == super.top():
+            self._minS.pop()
+            self._curMin = self._minS.top()
+        super.pop()
+        return
+
+    def min(self):
+        if self._minS.isEmpty():
+            raise Exception("Stack Empty")
+        else:
+            return self._minS.top()
+
+
+stackWithMin1 = StackWithMin()
+
