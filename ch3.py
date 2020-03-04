@@ -357,13 +357,20 @@ class MyQueue:
 
     def get(self):
         while len(self._stack1):
-            top = self._stack1.top
+            top = self._stack1.pop()
             self._stack2.append(top)
         first = self._stack2.pop()
         while len(self._stack2):
-            top = self._stack2.top
+            top = self._stack2.pop()
             self._stack1.append(top)
         return first 
+
+# myQ1 = MyQueue()
+# myQ1.put(1)    
+# myQ1.put(2)    
+# myQ1.put(3)
+# print(myQ1.get())    
+
 
 
     
