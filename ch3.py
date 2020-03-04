@@ -348,5 +348,22 @@ class MyQueue:
     """
     def __init__(self):
         self._stack1 = []
-        self._stack2 = p[]
+        self._stack2 = []
+        return
+
+    def put(self, val):
+        self._stack1.append(val)
+        return
+
+    def get(self):
+        while len(self._stack1):
+            top = self._stack1.top
+            self._stack2.append(top)
+        first = self._stack2.pop()
+        while len(self._stack2):
+            top = self._stack2.top
+            self._stack1.append(top)
+        return first 
+
+
     
