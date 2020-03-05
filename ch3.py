@@ -371,6 +371,35 @@ class MyQueue:
 # myQ1.put(3)
 # print(myQ1.get())    
 
+"""
+Problem 3.5. Sort Stack (smallest on top)
 
+May use a temporary stack but no other data structures
+"""
 
-    
+def sortStack(s):
+    sorted_ = Stack()
+    while not s.isEmpty():
+        # print('mango', s.top())
+        cur = s.top()
+        s.pop()
+        counter = 0
+        while (not sorted_.isEmpty()) and (cur > sorted_.top()):
+            s.push(sorted_.top())
+            sorted_.pop()
+            counter += 1
+        sorted_.push(cur)
+        while counter > 0:
+            sorted_.push(s.top())
+            s.pop()
+            counter -= 1
+    return sorted_
+
+sortStack1 = Stack()
+
+L = [1, 4, 6, 9, 2, 3, 5, 8]
+for e in L:
+    sortStack1.push(e)
+print(sortStack1.size())
+sortStack1 = sortStack(sortStack1)
+print(sortStack1.size())
