@@ -403,3 +403,76 @@ for e in L:
 print(sortStack1.size())
 sortStack1 = sortStack(sortStack1)
 print(sortStack1.size())
+
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def printList(self):
+        cur_ptr = self.head
+        while cur_ptr:
+            print(cur_ptr.val)
+            cur_ptr = cur_ptr.next
+
+class Animal:
+    _id = 0
+    def __init__(self, animal):
+        self._animal = animal
+        self._id = Animal._id
+        Animal._id += 1
+
+from collections import deque
+
+class AnimalShelter:
+    _id = 0
+    def __init__(self):
+        self._catList = deque([])
+        self._dogList = deque([])
+
+    # def enqueue(self, animal):
+    #     temp = Node(animal)
+    #     if animal._animal == 'cat':
+    #         if not self._catList.head:
+    #             self._catList.head = temp 
+    #             return
+    #         cur = self._catList.head 
+    #         while cur.next != None:
+    #             cur = cur.next
+    #         cur.next = temp
+    #     elif animal._animal == 'dog':
+    #         if not self._dogList.head:
+    #             self._dogList.head = temp 
+    #             return
+    #         cur = self._dogList.head 
+    #         while cur.next != None:
+    #             cur = cur.next
+    #         cur.next = temp
+    #     else:
+    #         raise Exception("Animal has to be cat or dog")
+
+    def enqueue(self, animal):
+        temp = Node(animal)
+        if animal._animal == 'cat':
+            self._catList.append(temp)
+        elif animal._animal == 'dog':
+            self._dogList.append(temp)
+        else:
+            raise Exception("animal not found")
+    
+    def dequeueCat(self):
+        return self._catList.popleft()
+
+    def dequeueDog(self):
+        return self._dogList.popleft()
+
+    def dequeueAny(self):
+        if not self._dogListL
+            return self.dequeueCat
+        else:
+            return self.dequeueDog
+    
