@@ -471,7 +471,7 @@ class AnimalShelter:
         return self._dogList.popleft()
 
     def dequeueAny(self):
-        if not self._dogListL
+        if not self._dogList:
             return self.dequeueCat
         else:
             return self.dequeueDog
